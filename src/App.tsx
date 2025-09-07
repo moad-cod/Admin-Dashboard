@@ -23,24 +23,7 @@ import routerProvider, {
 import { App as AntdApp } from "antd";
 import { createClient } from "graphql-ws";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router";
-import { authProvider } from "./authProvider";
-import { Header } from "./components/header";
-import { ColorModeContextProvider } from "./contexts/color-mode";
-import {
-  BlogPostCreate,
-  BlogPostEdit,
-  BlogPostList,
-  BlogPostShow,
-} from "./pages/blog-posts";
-import {
-  CategoryCreate,
-  CategoryEdit,
-  CategoryList,
-  CategoryShow,
-} from "./pages/categories";
-import { ForgotPassword } from "./pages/forgotPassword";
-import { Login } from "./pages/login";
-import { Register } from "./pages/register";
+
 
 const API_URL = "https://api.nestjs-query.refine.dev/graphql";
 const WS_URL = "wss://api.nestjs-query.refine.dev/graphql";
@@ -53,7 +36,7 @@ function App() {
     <BrowserRouter>
       <GitHubBanner />
       <RefineKbarProvider>
-        <ColorModeContextProvider>
+        
           <AntdApp>
             <DevtoolsProvider>
               <Refine
@@ -61,7 +44,6 @@ function App() {
                 liveProvider={liveProvider(wsClient)}
                 notificationProvider={useNotificationProvider}
                 routerProvider={routerProvider}
-                authProvider={authProvider}
                 resources={[
                   {
                     name: "blog_posts",
@@ -99,7 +81,7 @@ function App() {
                         fallback={<CatchAllNavigate to="/login" />}
                       >
                         <ThemedLayout
-                          Header={Header}
+                          
                           Sider={(props) => <ThemedSider {...props} fixed />}
                         >
                           <Outlet />
@@ -112,16 +94,16 @@ function App() {
                       element={<NavigateToResource resource="blog_posts" />}
                     />
                     <Route path="/blog-posts">
-                      <Route index element={<BlogPostList />} />
-                      <Route path="create" element={<BlogPostCreate />} />
-                      <Route path="edit/:id" element={<BlogPostEdit />} />
-                      <Route path="show/:id" element={<BlogPostShow />} />
+                      <Route index />
+                      <Route path="create" />
+                      <Route path="edit/:id" />
+                      <Route path="show/:id" />
                     </Route>
                     <Route path="/categories">
-                      <Route index element={<CategoryList />} />
-                      <Route path="create" element={<CategoryCreate />} />
-                      <Route path="edit/:id" element={<CategoryEdit />} />
-                      <Route path="show/:id" element={<CategoryShow />} />
+                      <Route index />
+                      <Route path="create" />
+                      <Route path="edit/:id" />
+                      <Route path="show/:id" />
                     </Route>
                     <Route path="*" element={<ErrorComponent />} />
                   </Route>
@@ -135,11 +117,11 @@ function App() {
                       </Authenticated>
                     }
                   >
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
+                    <Route path="/login"  />
+                    <Route path="/register"  />
                     <Route
                       path="/forgot-password"
-                      element={<ForgotPassword />}
+                      
                     />
                   </Route>
                 </Routes>
@@ -151,7 +133,6 @@ function App() {
               <DevtoolsPanel />
             </DevtoolsProvider>
           </AntdApp>
-        </ColorModeContextProvider>
       </RefineKbarProvider>
     </BrowserRouter>
   );
