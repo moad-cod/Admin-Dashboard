@@ -1,4 +1,4 @@
-# bright-bags-trade
+# new-vans-serve
 
 <div align="center" style="margin: 30px;">
     <a href="https://refine.dev">
@@ -47,3 +47,7 @@ To learn more about **Refine**, please check out the [Documentation](https://ref
 ## License
 
 MIT
+
+
+codegen command:
+    npm install --save-dev @graphql-codegen/typescript @graphql-codegen/typescript-operations @graphql-codegen/import-types-preset prettier vite-tsconfig-paths
